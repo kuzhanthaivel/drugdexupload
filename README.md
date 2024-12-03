@@ -18,7 +18,7 @@ This is a React-based frontend application to test an API that allows uploading 
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/drug-upload-app.git
+   git clone https://github.com/kuzhanthaivel/drugdexupload.git
    cd drug-upload-app
    ```
 
