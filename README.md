@@ -69,8 +69,8 @@ Follow these steps to set up the application locally:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/kuzhanthaivel/drugdexupload.git
-   cd drugdexupload
+   git clone https://github.com/your-username/drug-upload-app.git
+   cd drug-upload-app
    ```
 
 2. **Install dependencies**:
@@ -83,44 +83,60 @@ Follow these steps to set up the application locally:
    npm start
    ```
 
-4. Open your browser and navigate to:
-   ```
-   http://localhost:3000
-   ```
+   The application will be available at `https://drugdexupload.vercel.app/`.
 
----
+4. Ensure the backend API is running and accessible at `https://drug-dex-server.vercel.app/`.
 
-## 🚀 **Deployment**
-This project is deployed on [Vercel](https://vercel.com/). To deploy your version:
-1. Push your code to GitHub.
-2. Connect your GitHub repository to Vercel.
-3. Deploy the project by following Vercel’s instructions.
+## API Integration
 
----
+The application sends a `POST` request to the `/upload` API endpoint with the following fields:
 
-## 🤝 **Contributing**
-We welcome contributions to improve **DrugDex_Upload**! To contribute:
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature-branch-name
-   ```
-3. Make changes and commit:
-   ```bash
-   git commit -m "Add feature description"
-   ```
-4. Push your branch:
-   ```bash
-   git push origin feature-branch-name
-   ```
-5. Open a pull request on GitHub.
+| Field          | Type   | Description                                           |
+|-----------------|--------|-------------------------------------------------------|
+| `drugName`     | String | Name of the drug (required, unique).                  |
+| `description`  | String | Detailed description of the drug (required).          |
+| `uses`         | Array  | List of uses for the drug (comma-separated).          |
+| `indications`  | Array  | List of indications for the drug (comma-separated).   |
+| `sideEffects`  | Array  | List of side effects for the drug (comma-separated).  |
+| `warnings`     | Array  | List of warnings for the drug (comma-separated).      |
 
----
+Example payload:
+```json
+{
+  "drugName": "Paracetamol",
+  "description": "A pain reliever and a fever reducer.",
+  "uses": ["Relieves headache", "Reduces fever"],
+  "indications": ["Headache", "Fever"],
+  "sideEffects": ["Nausea", "Dizziness"],
+  "warnings": ["Do not use with alcohol"]
+}
+```
 
-## 📧 **Contact**
-For questions or feedback, reach out to:
-- **Developer**: Kuzhanthaivel
-- **Email**: kuzhanthaivel272@gmail.com
-- **GitHub**: [Kuzhanthaivel](https://github.com/kuzhanthaivel)
+## Application Structure
 
----
+- **`src/App.js`**: Contains the main logic and form implementation.
+- **Inline Styling**: Styles are applied directly in the React components for simplicity.
+
+## How to Use
+
+1. Fill in the form fields for the drug details.
+2. Click the "Upload" button to send the data to the API.
+3. View the success or error message after submission.
+
+## Customization
+
+- **API Endpoint**: Update the API URL in `App.js`:
+  ```javascript
+  const response = await axios.post("https://drug-dex-server.vercel.app/upload", payload);
+  ```
+- **Styling**: Modify inline styles in the `App.js` file to change the look and feel.
+
+## Dependencies
+
+- **React**: For building the UI.
+- **Axios**: For making HTTP requests.
+
+Install dependencies with:
+```bash
+npm install
+```
